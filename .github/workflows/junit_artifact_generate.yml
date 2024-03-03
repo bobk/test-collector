@@ -1,0 +1,17 @@
+  name: 'generate sample junit artifact'
+  on: 
+    workflow_dispatch:
+  jobs:
+    junit_artifact_generate:
+      runs-on: ubuntu-latest
+      steps:
+        - name: install python
+          uses: actions/setup-python@v5
+          with:
+            python-version: '3.12'  
+        - name: install dependencies
+          run: pip install -r demo/requirements.txt
+          shell: bash
+        - name: generate artifact
+          run: python demo/junit_artifact_generate.py
+          shell: bash
