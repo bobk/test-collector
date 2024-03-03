@@ -20,4 +20,4 @@ for case in range(1, NUM_CASES + 1):
 
 xmlfile = JUnitXml()
 xmlfile.add_testsuite(suite)
-xmlfile.write(os.path.join(os.environ['GITHUB_WORKSPACE'], 'junit.xml'))
+xmlfile.write('junit.xml')
