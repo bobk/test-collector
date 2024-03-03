@@ -23,5 +23,6 @@ jobs:
       - name: upload artifact
         uses: actions/upload-artifact@v3
         with:
+          path: .
           name: junit.xml
           if-no-files-found: ignore
