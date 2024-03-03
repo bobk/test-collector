@@ -10,8 +10,14 @@ jobs:
         with:
           python-version: "3.12"
       - name: install deps and run script
-        working-directory: ./demo
+        working-directory: demo
         shell: bash
         run: |
           pip install -r requirements.txt
           python junit_artifact_generate.py
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: junit.xml
+          path: demo
+          if-no-files-found: ignore
