@@ -7,7 +7,6 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./demo
     steps:
       - name: install python
         uses: actions/setup-python@v5
