@@ -1,19 +1,20 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
-trigger:
-  - main
-
-pool:
-  vmImage: ubuntu-latest
-
-steps:
-  - script: echo Hello, world!
-    displayName: "Run a one-line script"
-
-  - script: |
-      echo Add other tasks to build, test, and deploy your project.
-      echo See https://aka.ms/yaml
-    displayName: "Run a multi-line script"
+name: "generate sample junit artifact"
+jobs:
+  - job: junit_artifact_generate
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: "3.12"
+      - script: |
+          cd ./demo
+          ls -lR
+          pip install -r requirements.txt
+          python junit_artifact_generate.py
+        displayName: "install deps and run script"
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: "./demo/junit.xml"
+          artifact: "junit.xml"
+        displayName: "upload artifact"
