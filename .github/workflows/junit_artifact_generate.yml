@@ -7,7 +7,6 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./demo
     steps:
       - name: clone repo
         uses: actions/checkout@v4
@@ -17,12 +16,13 @@ jobs:
           python-version: "3.12"
       - name: install deps and run script
         run: |
+          cd ./demo
           ls -lR
           pip install -r requirements.txt
           python junit_artifact_generate.py
       - name: upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          path: .
+          path: ./demo/junit.xml
           name: junit.xml
           if-no-files-found: ignore
