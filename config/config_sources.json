@@ -1,0 +1,38 @@
+{
+    "//": "some comment here",
+    "options": {
+        "foo": "blah",
+        "ack": "barf"
+    },
+    "data": {
+        "example_1": {
+            "//": "some comment here",
+            "run": true,
+            "desc": "a regular AZDO test pipeline for component ABC",
+            "handler": "azdo",
+            "org": "krcloud1",
+            "project": "terraform",
+            "build_id": 14,
+            "verb": "get_latest_run",
+            "patterns": [
+                "name1"
+            ],
+            "converter": "junit"
+        },
+        "example_2": {
+            "//": "some comment here",
+            "run": true,
+            "desc": "a regular GitHub test workflow for component DEF",
+            "handler": "github",
+            "org": "bobk",
+            "repo": "test-collector",
+            "workflow": "junit_artifact_generate.yml",
+            "verb": "get_latest_run",
+            "status": "success",
+            "patterns": [
+                "^junit.xml"
+            ],
+            "converter": "junit"
+        }
+    }
+}

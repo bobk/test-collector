@@ -1,0 +1,10 @@
+.vscode
+.vscode/**
+*.cmd
+*.csv
+*.xml
+.pylintrc
+__pycache__
+**/__pycache__
+temp
+temp/**
