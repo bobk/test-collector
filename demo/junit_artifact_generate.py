@@ -3,7 +3,7 @@ import random
 from junitparser import JUnitXml, TestSuite, TestCase, FloatAttr, Failure
 
 #   os.environ['GITHUB_RUN_ID']  Build.ID
-RUN_ID = (os.environ['GITHUB_RUN_ID'] or os.environ['BUILD_BUILDID'])
+RUN_ID = (os.getenv('GITHUB_RUN_ID') or os.getenv('BUILD_BUILDID'))
 suite = TestSuite('Application1.Component1')
 suite.add_property('run_id', RUN_ID)
 
