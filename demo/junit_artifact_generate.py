@@ -2,9 +2,10 @@ import os
 import random
 from junitparser import JUnitXml, TestSuite, TestCase, FloatAttr, Failure
 
-
+#   os.environ['GITHUB_RUN_ID']  Build.ID
+RUN_ID = (os.environ['GITHUB_RUN_ID'] or os.environ['BUILD_BUILDID'])
 suite = TestSuite('Application1.Component1')
-suite.add_property('run_id', os.environ['GITHUB_RUN_ID'])
+suite.add_property('run_id', RUN_ID)
 
 NUM_CASES = 5
 CASE_CLASS_LIST = ['Stability', 'Functionality', 'Scalability', 'Security']
