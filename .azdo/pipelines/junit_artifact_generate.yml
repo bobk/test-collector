@@ -12,7 +12,7 @@ jobs:
           cd ./demo
           ls -lR
           pip install -r requirements.txt
-          python junit_artifact_generate.py
+          python junit_artifact_generate.py --suitename=Application.Component1
         displayName: "install deps and run script"
       - task: PublishPipelineArtifact@1
         inputs:

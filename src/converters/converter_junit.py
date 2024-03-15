@@ -1,7 +1,7 @@
 import csv
 import datetime
 import os
-from junitparser import JUnitXml, TestCase, Attr
+from junitparser import JUnitXml, TestCase, Attr, Failure
 
 class MyTestCase(TestCase):
     coverage = Attr()
@@ -24,6 +24,10 @@ def exec_verb(inputargs: dict, filename: str, filedatetime: datetime.datetime):
     #            if (attribute.name == 'coverage'):
     #                coverage = attribute.value
             my_case = MyTestCase.fromelem(case)
+            if (my_case.result == [Failure()]):
+                print('fail')
+            else:
+                print('pass')
             csvrow = [str(filedatetime), run_id, suite.name, case.name, case.classname, my_case.coverage]
             csv.writer(csvfile).writerow(csvrow)
 

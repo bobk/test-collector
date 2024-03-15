@@ -21,7 +21,7 @@ def exec_verb(inputargs : dict):
     input_workflow = inputargs['workflow']
     input_verb = inputargs['verb']
     input_status = inputargs['status']
-    input_patterns = inputargs['patterns']
+    input_artifact_patterns = inputargs['artifact_patterns']
 
     # using an access token
     gh_auth = Auth.Token(os.environ['GITHUB_TOKEN'])
@@ -41,7 +41,7 @@ def exec_verb(inputargs : dict):
         gh_workflow_run = gh_workflow.get_runs(status=input_status)[0]
         print(gh_workflow_run)
         gh_workflow_artifacts = gh_workflow_run.get_artifacts()
-        input_patterns_compiled = map(re.compile, input_patterns)
+        input_patterns_compiled = map(re.compile, input_artifact_patterns)
         for artifact in gh_workflow_artifacts:
             if any(regex.match(artifact.name) for regex in input_patterns_compiled):
                 pprint.pprint(vars(artifact))
@@ -58,9 +58,9 @@ def exec_verb(inputargs : dict):
 #                    mybytes2 = success[1].as_bytes()
 #                    print(mybytes2)
                     with zipfile.ZipFile(zipfilename, 'r') as zip_f:
-                        zip_f.extractall()
-#                        zip_f.getinfo('demo/junit.xml').filename = f"{artifact.name}"
-#                        zip_f.extract('demo/junit.xml')
+#                        zip_f.extractall()
+                        zip_f.getinfo('junit.xml').filename = "junit_github.xml"
+                        zip_f.extract('junit.xml')
                     os.remove(zipfilename)
                     artifact_ret = artifact
                     break
@@ -68,4 +68,4 @@ def exec_verb(inputargs : dict):
     # To close connections after use
     gh.close()
 
-    return True, artifact_ret.name, artifact_ret.created_at
+    return True, "junit_github.xml", artifact_ret.created_at

@@ -12,11 +12,12 @@
             "handler": "azdo",
             "org": "krcloud1",
             "project": "terraform",
-            "build_id": 14,
+            "definition_id": 15,
             "verb": "get_latest_run",
-            "patterns": [
-                "name1"
+            "artifact_patterns": [
+                "^junit.xml"
             ],
+            "artifact_subpath": "junit.xml/",
             "converter": "junit"
         },
         "example_2": {
@@ -29,9 +30,10 @@
             "workflow": "junit_artifact_generate.yml",
             "verb": "get_latest_run",
             "status": "success",
-            "patterns": [
+            "artifact_patterns": [
                 "^junit.xml"
             ],
+            "artifact_subpath": "",
             "converter": "junit"
         }
     }
