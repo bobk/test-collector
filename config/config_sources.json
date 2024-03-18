@@ -1,8 +1,10 @@
 {
     "//": "some comment here",
     "options": {
-        "foo": "blah",
-        "ack": "barf"
+        "converter_junit": {
+            "csv_output": "junit_data_all.csv",
+            "xml_delete": false
+        }
     },
     "data": {
         "example_1": {
@@ -18,7 +20,9 @@
                 "^junit.xml"
             ],
             "artifact_subpath": "junit.xml/",
-            "converter": "junit"
+            "artifact_converter": "junit",
+            "artifact_output": "junit_azdo.xml",
+            "zip_output": "junit_azdo.zip"
         },
         "example_2": {
             "//": "some comment here",
@@ -34,7 +38,9 @@
                 "^junit.xml"
             ],
             "artifact_subpath": "",
-            "converter": "junit"
+            "artifact_converter": "junit",
+            "artifact_output": "junit_github.xml",
+            "zip_output": "junit_github.zip"
         }
     }
 }

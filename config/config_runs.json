@@ -1,0 +1,9 @@
+{
+    "//": "set all last_run_id values to 0 when starting a new setup",
+    "azdo": {
+        "last_run_id": 435
+    },
+    "github": {
+        "last_run_id": 8330298062
+    }
+}
