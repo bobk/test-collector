@@ -1,3 +1,6 @@
+# this is a simple demo program to write a simple junit.xml file with random values
+# it is called from demo pipelines
+
 import os
 import random
 import argparse
@@ -5,7 +8,7 @@ from junitparser import JUnitXml, TestSuite, TestCase, FloatAttr, Failure
 
 arg_parser = argparse.ArgumentParser()
 SUITENAME_DEFAULT = 'Component1'
-arg_parser.add_argument('--suitename', help=f'test suite name to use (default = "{SUITENAME_DEFAULT}")')
+arg_parser.add_argument('--suitename', help=f'test suite name to use (default = "{SUITENAME_DEFAULT}")', default=SUITENAME_DEFAULT)
 args = arg_parser.parse_args()
 
 #   os.environ['GITHUB_RUN_ID']  Build.ID

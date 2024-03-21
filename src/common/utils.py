@@ -1,26 +1,26 @@
 import logging
-import datetime
+import sys
 import json
 from typing import Any
 
-def _datetime_format() -> str:
+def log_start(options: dict):
 
-    return "{logtimestamp:%Y-%m-%dT%H:%M:%S} ".format( logtimestamp=datetime.datetime.now())
+    handlers = [
+        logging.StreamHandler(stream=sys.stdout),
+        logging.FileHandler(filename=options['output'])
+    ]
+    logging.basicConfig(level=logging.getLevelName(options['level']), style=options['style'], format=options['format'], handlers=handlers)
+    log_print('logging started')
 
-def log_start():
+def log_end():
 
-    logging.basicConfig(filename='myapp.log', level=logging.INFO)
-    print_log('Started')
+    log_print('logging ended')
+    logging.shutdown()
 
-def print_log(inputval : Any) -> None:
-
-    final = ''
+def log_print(inputval : Any) -> None:
 
     try:
-        final = json.dumps(inputval)
+        finalval = json.dumps(inputval)
     except TypeError:
-        final = str(inputval)
-    log_entry = _datetime_format() + final
-
-    print(log_entry)
-    logging.info(log_entry)
+        finalval = str(inputval)
+    logging.log(level=logging.getLogger().level, msg=finalval)

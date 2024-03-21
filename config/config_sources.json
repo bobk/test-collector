@@ -1,11 +1,8 @@
 {
-    "//": "some comment here",
-    "options": {
-        "converter_junit": {
-            "csv_output": "junit_data_all.csv",
-            "xml_delete": false
-        }
-    },
+    "//": [
+        "some comment here"
+    ],
+    "options": {},
     "data": {
         "example_1": {
             "//": "some comment here",

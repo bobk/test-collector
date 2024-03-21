@@ -1,0 +1,17 @@
+{
+    "//": [
+        "some comment here"
+    ],
+    "converters": {
+        "junit": {
+            "csv_output": "junit_data_all.csv",
+            "xml_delete": false
+        }
+    },
+    "logging": {
+        "style": "%",
+        "format": "%(asctime)s %(levelname)-6s %(message)s",
+        "output": "..\\temp\\test-collector.log",
+        "level": "INFO"
+    }
+}
