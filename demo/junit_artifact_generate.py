@@ -11,7 +11,6 @@ SUITENAME_DEFAULT = 'Component1'
 arg_parser.add_argument('--suitename', help=f'test suite name to use (default = "{SUITENAME_DEFAULT}")', default=SUITENAME_DEFAULT)
 args = arg_parser.parse_args()
 
-#   os.environ['GITHUB_RUN_ID']  Build.ID
 RUN_ID = os.getenv('GITHUB_RUN_ID', '') or os.getenv('BUILD_BUILDID', '')
 suite = TestSuite(args.suitename if args.suitename else SUITENAME_DEFAULT)
 suite.add_property('run_id', RUN_ID)

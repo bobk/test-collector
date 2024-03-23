@@ -16,9 +16,9 @@ jobs:
           python-version: "3.12"
       - name: install deps and run script
         run: |
+          pip install -r requirements.txt
           cd ./demo
           ls -lR
-          pip install -r requirements.txt
           python junit_artifact_generate.py --suitename=Application1.Component2
       - name: upload artifact
         uses: actions/upload-artifact@v4

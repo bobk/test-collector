@@ -9,9 +9,9 @@ jobs:
           versionSpec: "3.12"
         displayName: "install python"
       - script: |
+          pip install -r requirements.txt
           cd ./demo
           ls -lR
-          pip install -r requirements.txt
           python junit_artifact_generate.py --suitename=Application1.Component1
         displayName: "install deps and run script"
       - task: PublishPipelineArtifact@1

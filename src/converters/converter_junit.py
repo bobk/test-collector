@@ -7,6 +7,7 @@ import common.utils as utils
 class MyTestCase(TestCase):
     coverage = Attr()
 
+@utils.trace
 def exec_verb(inputargs: dict, filename: str, filedatetime: datetime.datetime):
     """
     this function is the converter for junit XML data file format, called from main.py
@@ -19,34 +20,28 @@ def exec_verb(inputargs: dict, filename: str, filedatetime: datetime.datetime):
 
     Returns:
     written (bool): was the data written properly?
-    
     """
 
-    utils.log_print("executing: " + __file__)
-    utils.log_print(inputargs)
-    utils.log_print("working dir: " + os.getcwd())
     written = False
+    outfilepath = os.path.join(utils.OUTPUT_PATH, inputargs['csv_output'])
 
     xmlfile = JUnitXml.fromfile(filename)
-    utils.log_print("opened XML file: " + filename)
-    csvfile = open(inputargs['csv_output'], 'a', newline='', encoding='UTF-8')
+    utils.log_print(f"opened XML file = {filename}")
+    csvfile = open(outfilepath, 'a', newline='', encoding='UTF-8')
     for suite in xmlfile:
-        utils.log_print("found test suite = " + suite.name)
+        utils.log_print(f"found test suite = {suite.name}")
         for my_property in suite.properties():
             if (my_property.name == 'run_id'):
                 run_id = my_property.value
-                utils.log_print("found run_id = " + str(run_id))
+                utils.log_print(f"found run_id = {str(run_id)}")
         for case in suite:
-            utils.log_print("found test case = " + case.name)
+            utils.log_print(f"found test case = {case.name}")
             my_case = MyTestCase.fromelem(case)
-            if (my_case.result == [Failure()]):
-                my_case_resultnum = 1
-            else:
-                my_case_resultnum = 0
+            my_case_resultnum = 1 if (my_case.result == [Failure()]) else 0
             csvrow = [str(filedatetime), run_id, suite.name, case.name, case.classname, my_case_resultnum, my_case.coverage]
             csv.writer(csvfile).writerow(csvrow)
 
-    utils.log_print("written: " + inputargs['csv_output'])
+    utils.log_print(f"written = {outfilepath}")
     csvfile.close()
     written = True
     if (inputargs['xml_delete']):

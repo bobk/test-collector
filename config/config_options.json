@@ -2,6 +2,9 @@
     "//": [
         "some comment here"
     ],
+    "common": {
+        "output_dir": "..\\output"
+    },
     "converters": {
         "junit": {
             "csv_output": "junit_data_all.csv",
@@ -11,7 +14,7 @@
     "logging": {
         "style": "%",
         "format": "%(asctime)s %(levelname)-6s %(message)s",
-        "output": "..\\temp\\test-collector.log",
+        "output_file": "..\\output\\test-collector.log",
         "level": "INFO"
     }
 }
