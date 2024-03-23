@@ -1,0 +1,21 @@
+name: "generate sample junit artifact"
+jobs:
+  - job: junit_artifact_generate
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: "3.12"
+        displayName: "install python"
+      - script: |
+          pip install -r requirements.txt
+          cd ./demo
+          ls -lR
+          python junit_artifact_generate.py --suitename=Application1.Component1
+        displayName: "install deps and run script"
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: "./demo/junit.xml"
+          artifact: "junit.xml"
+        displayName: "upload artifact"

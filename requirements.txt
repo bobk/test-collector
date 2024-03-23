@@ -1,0 +1,16 @@
+# all packages are tested and latest as of 2024-03-17
+#
+pygithub==2.2.0
+azure-common==1.1.28
+azure-core==1.30.1
+azure-devops==7.1.0b4
+azure-identity==1.15.0
+msrest==0.7.1
+oauthlib==3.2.2
+msal==1.27.0
+msal-extensions==1.1.0
+requests==2.31.0
+requests-oauthlib==1.4.0
+urllib3==2.2.1
+junitparser==3.1.2
+pytest==8.0.2

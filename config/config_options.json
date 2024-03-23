@@ -1,0 +1,20 @@
+{
+    "//": [
+        "some comment here"
+    ],
+    "common": {
+        "output_dir": "..\\output"
+    },
+    "converters": {
+        "junit": {
+            "csv_output": "junit_data_all.csv",
+            "xml_delete": false
+        }
+    },
+    "logging": {
+        "style": "%",
+        "format": "%(asctime)s %(levelname)-6s %(message)s",
+        "output_file": "..\\output\\test-collector.log",
+        "level": "INFO"
+    }
+}

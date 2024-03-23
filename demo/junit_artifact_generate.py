@@ -1,10 +1,19 @@
+# this is a simple demo program to write a simple junit.xml file with random values
+# it is called from demo pipelines
+
 import os
 import random
+import argparse
 from junitparser import JUnitXml, TestSuite, TestCase, FloatAttr, Failure
 
+arg_parser = argparse.ArgumentParser()
+SUITENAME_DEFAULT = 'Component1'
+arg_parser.add_argument('--suitename', help=f'test suite name to use (default = "{SUITENAME_DEFAULT}")', default=SUITENAME_DEFAULT)
+args = arg_parser.parse_args()
 
-suite = TestSuite('Application1.Component1')
-suite.add_property('run_id', os.environ['GITHUB_RUN_ID'])
+RUN_ID = os.getenv('GITHUB_RUN_ID', '') or os.getenv('BUILD_BUILDID', '')
+suite = TestSuite(args.suitename if args.suitename else SUITENAME_DEFAULT)
+suite.add_property('run_id', RUN_ID)
 
 NUM_CASES = 5
 CASE_CLASS_LIST = ['Stability', 'Functionality', 'Scalability', 'Security']
@@ -20,4 +29,4 @@ for case in range(1, NUM_CASES + 1):
 
 xmlfile = JUnitXml()
 xmlfile.add_testsuite(suite)
-xmlfile.write(os.path.join(os.environ['GITHUB_WORKSPACE'], 'junit.xml'))
+xmlfile.write('junit.xml')

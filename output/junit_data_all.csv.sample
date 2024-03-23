@@ -1,0 +1,21 @@
+date,id,component,case,class,pass,coverage
+2024-03-21 17:01:16,437,Application1.Component1,case1,class.Functionality,0,23
+2024-03-21 17:01:16,437,Application1.Component1,case2,class.Stability,0,72
+2024-03-21 17:01:16,437,Application1.Component1,case3,class.Security,1,81
+2024-03-21 17:01:16,437,Application1.Component1,case4,class.Security,0,93
+2024-03-21 17:01:16,437,Application1.Component1,case5,class.Security,1,23
+2024-03-20 16:44:40,8362689594,Application1.Component2,case1,class.Security,0,7
+2024-03-20 16:44:40,8362689594,Application1.Component2,case2,class.Functionality,0,44
+2024-03-20 16:44:40,8362689594,Application1.Component2,case3,class.Functionality,0,78
+2024-03-20 16:44:40,8362689594,Application1.Component2,case4,class.Scalability,1,30
+2024-03-20 16:44:40,8362689594,Application1.Component2,case5,class.Functionality,0,23
+2024-03-23 17:01:16,437,Application1.Component1,case1,class.Functionality,0,16
+2024-03-23 17:01:16,437,Application1.Component1,case2,class.Stability,1,85
+2024-03-23 17:01:16,437,Application1.Component1,case3,class.Security,0,25
+2024-03-23 17:01:16,437,Application1.Component1,case4,class.Security,0,61
+2024-03-23 17:01:16,437,Application1.Component1,case5,class.Security,1,23
+2024-03-22 16:44:40,8362689594,Application1.Component2,case1,class.Security,0,5
+2024-03-22 16:44:40,8362689594,Application1.Component2,case2,class.Functionality,0,42
+2024-03-22 16:44:40,8362689594,Application1.Component2,case3,class.Functionality,0,16
+2024-03-22 16:44:40,8362689594,Application1.Component2,case4,class.Scalability,1,28
+2024-03-22 16:44:40,8362689594,Application1.Component2,case5,class.Functionality,0,69

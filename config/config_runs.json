@@ -1,0 +1,12 @@
+{
+    "//": [
+        "when setting up a new configuration, add a key below for each data source",
+        "in config_sources.json, and set all the last_run_id values to 0"
+    ],
+    "example_1": {
+        "last_run_id": 437
+    },
+    "example_2": {
+        "last_run_id": 8362689594
+    }
+}
