@@ -1,6 +1,5 @@
 .vscode
 .vscode/**
-*.cmd
 *.csv
 *.xml
 *.log
@@ -12,3 +11,4 @@ temp/**
 !temp/*.sample
 backup
 backup/**
+config/config_runs.json

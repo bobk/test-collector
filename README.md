@@ -9,8 +9,8 @@ The functionality represented in this repo is intended to be a base from which m
 ### Components
 
    * core parent script that spins up a config and calls handlers and converters
-   * handlers for GitHub workflows and Azure Devops (AZDO) pipelines
-   * converter for JUnit XML files (to convert to CSV)
+   * handlers for GitHub workflows and Azure Devops (AZDO) pipelines - other handlers can be added
+   * converter for JUnit XML files (to convert to CSV) - other converters can be added
    * sample starter config files to drive the above
    * sample GitHub workflow and AZDO pipeline in YAML format that generate sample JUnit XML files
    * PyTest script for the above (using existing private pipelines)
@@ -21,7 +21,7 @@ The functionality represented in this repo is intended to be a base from which m
 
    * clone repo locally
    * define following env vars:
-      * TEST-COLLECTOR_FILE_ROOT_PATH = root of repo
+      * TEST-COLLECTOR_FILE_ROOT_PATH = path to root of repo, e.g.: c:\repos\test-collector
       * GITHUB_TOKEN (requires ability to read workflow artifacts)
       * AZURE_DEVOPS_PAT (requires ability to read pipeline artifacts)
    * update config\config_sources.json:
@@ -30,17 +30,22 @@ The functionality represented in this repo is intended to be a base from which m
          * CI handler
          * parameters for that CI system
          * pipeline or workflow id or name
-         * the information about the desired artifact
+         * the information about the desired artifact and its structure
    * update config\config_runs.json:
       * sections for each source
       * in each section, set last_run_id = 0
    * update config\config_options.json:
       * logging and output options
+   * create a new file output\junit_data_all.csv:
+      * put the CSV header into it as per Output below
 
 ### Usage
 
    * from the root of the repo, run "run.cmd" (Windows batch script)
    * output will be to stdout and to the logging file specified in the config
+   * for testing:
+      * configure tests\test_source.py with the relevant sources and expected pipeline/workflow run ids
+      * from the root of the repo, run "test.cmd"
 
 ### Output
 
@@ -51,6 +56,12 @@ date,id,component,case,class,pass,coverage
 2024-03-21 17:01:16,437,Application1.Component1,case3,class.Security,1,81
 2024-03-21 17:01:16,437,Application1.Component1,case4,class.Security,0,93
 2024-03-21 17:01:16,437,Application1.Component1,case5,class.Security,1,23
+2024-03-20 16:44:40,8362689594,Application1.Component2,case1,class.Security,0,7
+2024-03-20 16:44:40,8362689594,Application1.Component2,case2,class.Functionality,0,44
+2024-03-20 16:44:40,8362689594,Application1.Component2,case3,class.Functionality,0,78
+2024-03-20 16:44:40,8362689594,Application1.Component2,case4,class.Scalability,1,30
+2024-03-20 16:44:40,8362689594,Application1.Component2,case5,class.Functionality,0,23
+...
 </pre>
 
 ### Visualization
@@ -60,5 +71,13 @@ date,id,component,case,class,pass,coverage
 ### To-Do
 
    * expand documentation further based on customer feedback
+   * add converters for other test data formats
    * parallelize handlers
 
+### Helpful Links
+
+   * https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview
+   * https://pypi.org/project/junitparser/
+   * https://www.diva-portal.org/smash/get/diva2:1772629/FULLTEXT01.pdf
+   * https://github.com/PyGithub/PyGithub
+   * https://effectivepython.com/
